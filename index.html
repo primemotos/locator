@@ -1,44 +1,569 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rastreamento em Tempo Real</title>
-    <link rel="icon" type="image/png" href="logo.png">
-    
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <title>Orientação Espiritual</title>
+
+    <meta name="description"
+          content="Atendimento espiritual online, orientação, consultas e trabalhos personalizados.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <div id="login-overlay" class="login-overlay">
-        <div class="login-box">
-            <img src="logo.png" alt="Wiu Logo" class="logo">
-            <h2>Wiu Rastreamento Seguro</h2>
-            <p>Insira o código de rastreio para visualizar a carga.</p>
-            
-            <input type="text" id="access-code" placeholder="Código de Acesso" maxlength="8">
-            
-            <button id="btn-login">Rastrear Carga</button>
-            
-            <p id="error-msg" style="color: red; display: none; margin-top: 10px;">Código inválido.</p>
+<!-- =====================================================
+     HEADER / HERO
+===================================================== -->
+
+<header class="hero">
+
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-content">
+
+        <img src="logo.png" class="logo" alt="Logo">
+
+        <span class="eyebrow">✦ ATENDIMENTO ESPIRITUAL ✦</span>
+
+        <h1>
+            Se você chegou até aqui,
+            <strong>talvez não seja por acaso.</strong>
+        </h1>
+
+        <p>
+            Encontre orientação, acolhimento e um novo olhar
+            para os caminhos da sua vida.
+        </p>
+
+        <a href="#contato" class="btn btn-primary">
+            Falar comigo agora
+        </a>
+
+    </div>
+</header>
+
+
+<!-- =====================================================
+     INTRODUÇÃO
+===================================================== -->
+
+<section class="intro section">
+
+    <div class="container intro-grid">
+
+        <div class="intro-image">
+            <div class="image-placeholder">
+                <span>✦</span>
+            </div>
         </div>
+
+        <div class="intro-text">
+
+            <span class="section-label">SOBRE O ATENDIMENTO</span>
+
+            <h2>
+                Um atendimento feito
+                <span>para você</span>
+            </h2>
+
+            <p>
+                Cada pessoa carrega uma história, dúvidas e momentos
+                diferentes. Por isso, cada atendimento é realizado
+                de maneira individualizada e com total discrição.
+            </p>
+
+            <p>
+                O objetivo é oferecer um espaço de acolhimento,
+                orientação e reflexão para quem busca compreender
+                melhor seus caminhos.
+            </p>
+
+            <a href="#contato" class="text-link">
+                Quero conversar →
+            </a>
+
+        </div>
+
     </div>
 
-    <div id="map"></div>
+</section>
 
-    <div class="delivery-info" id="info-card" style="display: none;"> 
-        <div class="driver-avatar"></div>
-        <div class="info-text">
-            <h3>Transporte Rodoviário</h3>
-            <span class="status-badge" id="time-badge">3 DIAS</span>
-            <h5>EM ROTA</h5>
-            <p>BRASILIA</p>
-            <p>MINAS GERAIS</p>
+
+<!-- =====================================================
+     ESTATÍSTICAS
+===================================================== -->
+
+<section class="stats">
+
+    <div class="container stats-grid">
+
+        <div class="stat">
+            <strong>+20</strong>
+            <span>Anos de experiência</span>
         </div>
+
+        <div class="stat">
+            <strong>+5 mil</strong>
+            <span>Atendimentos realizados</span>
+        </div>
+
+        <div class="stat">
+            <strong>24h</strong>
+            <span>Atendimento online</span>
+        </div>
+
+        <div class="stat">
+            <strong>100%</strong>
+            <span>Sigilo e discrição</span>
+        </div>
+
     </div>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="script.js"></script>
+</section>
+
+
+<!-- =====================================================
+     SERVIÇOS
+===================================================== -->
+
+<section class="services section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="section-label">COMO POSSO AJUDAR</span>
+
+            <h2>
+                Atendimentos
+                <span>espirituais</span>
+            </h2>
+
+            <p>
+                Escolha o atendimento que mais combina com
+                o momento que você está vivendo.
+            </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+            <article class="service-card">
+
+                <div class="service-icon">☾</div>
+
+                <h3>Consulta Espiritual</h3>
+
+                <p>
+                    Um momento reservado para conversar,
+                    compreender suas dúvidas e buscar orientação.
+                </p>
+
+                <a href="#contato">Falar sobre isso →</a>
+
+            </article>
+
+
+            <article class="service-card">
+
+                <div class="service-icon">✦</div>
+
+                <h3>Jogo de Búzios</h3>
+
+                <p>
+                    Consulta tradicional voltada à reflexão,
+                    orientação e compreensão de diferentes caminhos.
+                </p>
+
+                <a href="#contato">Quero saber mais →</a>
+
+            </article>
+
+
+            <article class="service-card">
+
+                <div class="service-icon">☀</div>
+
+                <h3>Orientação Amorosa</h3>
+
+                <p>
+                    Converse sobre relacionamentos, sentimentos,
+                    afastamentos e decisões importantes.
+                </p>
+
+                <a href="#contato">Falar sobre isso →</a>
+
+            </article>
+
+
+            <article class="service-card">
+
+                <div class="service-icon">♢</div>
+
+                <h3>Limpeza Energética</h3>
+
+                <p>
+                    Atendimento voltado ao equilíbrio pessoal
+                    e à busca por uma sensação maior de bem-estar.
+                </p>
+
+                <a href="#contato">Quero saber mais →</a>
+
+            </article>
+
+
+            <article class="service-card">
+
+                <div class="service-icon">∞</div>
+
+                <h3>Abertura de Caminhos</h3>
+
+                <p>
+                    Um atendimento para quem deseja refletir
+                    sobre novos ciclos e possibilidades.
+                </p>
+
+                <a href="#contato">Falar agora →</a>
+
+            </article>
+
+
+            <article class="service-card">
+
+                <div class="service-icon">♡</div>
+
+                <h3>Reconciliação</h3>
+
+                <p>
+                    Orientação para momentos de distanciamento,
+                    conflitos e dificuldades nos relacionamentos.
+                </p>
+
+                <a href="#contato">Quero conversar →</a>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     BANNER CTA
+===================================================== -->
+
+<section class="cta-banner">
+
+    <div class="container">
+
+        <span>✦ ATENDIMENTO ONLINE ✦</span>
+
+        <h2>
+            Você não precisa passar
+            por tudo sozinho.
+        </h2>
+
+        <p>
+            Converse de maneira reservada e descubra
+            qual atendimento pode fazer sentido para você.
+        </p>
+
+        <a href="#contato" class="btn btn-primary">
+            Falar comigo
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ESPECIALIDADE
+===================================================== -->
+
+<section class="special section">
+
+    <div class="container special-grid">
+
+        <div class="special-text">
+
+            <span class="section-label">ATENDIMENTO ESPECIAL</span>
+
+            <h2>
+                Quando o coração
+                <span>pede respostas</span>
+            </h2>
+
+            <p>
+                Questões amorosas podem trazer muitas dúvidas.
+                Às vezes existe distância, falta de comunicação
+                ou simplesmente a necessidade de entender melhor
+                aquilo que estamos sentindo.
+            </p>
+
+            <p>
+                O atendimento oferece um espaço reservado para
+                conversar sobre sua situação e encontrar
+                direcionamento.
+            </p>
+
+            <button class="accordion-button">
+                Quando procurar orientação?
+                <span>+</span>
+            </button>
+
+            <div class="accordion-content">
+
+                <ul>
+                    <li>Quando você está vivendo uma fase de dúvidas.</li>
+                    <li>Quando existe dificuldade de comunicação.</li>
+                    <li>Quando deseja compreender melhor uma situação.</li>
+                    <li>Quando precisa conversar com alguém de forma reservada.</li>
+                </ul>
+
+            </div>
+
+            <button class="accordion-button">
+                Como funciona o atendimento?
+                <span>+</span>
+            </button>
+
+            <div class="accordion-content">
+
+                <p>
+                    Após entrar em contato, você recebe as informações
+                    sobre o atendimento e pode explicar brevemente
+                    aquilo que está buscando.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="special-image">
+            <div class="image-placeholder large">
+                <span>☾</span>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     GALERIA
+===================================================== -->
+
+<section class="gallery section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="section-label">MOMENTOS</span>
+
+            <h2>
+                Um pouco do nosso
+                <span>trabalho</span>
+            </h2>
+
+        </div>
+
+        <div class="gallery-grid">
+
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DEPOIMENTOS
+===================================================== -->
+
+<section class="testimonials section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="section-label">DEPOIMENTOS</span>
+
+            <h2>
+                Histórias de quem
+                <span>já conversou comigo</span>
+            </h2>
+
+        </div>
+
+
+        <div class="testimonial-grid">
+
+            <article class="testimonial">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    “Fui muito bem atendida e me senti acolhida
+                    desde o primeiro contato. Foi importante
+                    poder conversar sobre o que estava vivendo.”
+                </p>
+
+                <strong>— Cliente, São Paulo</strong>
+
+            </article>
+
+
+            <article class="testimonial">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    “O atendimento foi muito tranquilo e reservado.
+                    Saí da conversa com uma visão diferente
+                    da situação.”
+                </p>
+
+                <strong>— Cliente, Goiás</strong>
+
+            </article>
+
+
+            <article class="testimonial">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    “Gostei muito da atenção e da forma como
+                    tudo foi explicado. Recomendo para quem
+                    está precisando de orientação.”
+                </p>
+
+                <strong>— Cliente, Bahia</strong>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CONTATO
+===================================================== -->
+
+<section class="contact section" id="contato">
+
+    <div class="container contact-box">
+
+        <div class="contact-content">
+
+            <span class="section-label">FALE COMIGO</span>
+
+            <h2>
+                Pronto para dar
+                <span>o próximo passo?</span>
+            </h2>
+
+            <p>
+                Entre em contato pelo WhatsApp para saber mais
+                sobre os atendimentos disponíveis.
+            </p>
+
+            <div class="contact-info">
+
+                <div>
+                    <span>WHATSAPP</span>
+                    <strong>(11) 99999-9999</strong>
+                </div>
+
+                <div>
+                    <span>ATENDIMENTO</span>
+                    <strong>Online para todo o Brasil</strong>
+                </div>
+
+            </div>
+
+            <a
+                class="btn btn-primary btn-large"
+                href="https://wa.me/5511999999999"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                💬 Conversar pelo WhatsApp
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     RODAPÉ
+===================================================== -->
+
+<footer>
+
+    <div class="container footer-content">
+
+        <img src="logo.png" alt="Logo" class="footer-logo">
+
+        <p>
+            Atendimento espiritual online.
+        </p>
+
+        <div class="footer-line"></div>
+
+        <small>
+            © <span id="year"></span> — Todos os direitos reservados.
+        </small>
+
+    </div>
+
+</footer>
+
+
+<!-- =====================================================
+     WHATSAPP FLUTUANTE
+===================================================== -->
+
+<a
+    href="https://wa.me/5511999999999"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="whatsapp-float"
+    aria-label="Falar pelo WhatsApp"
+>
+    <span>☏</span>
+</a>
+
+
+<script src="script.js"></script>
+
 </body>
 </html>
