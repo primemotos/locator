@@ -1,96 +1,1011 @@
+:root {
+    --bg: #090611;
+    --bg-secondary: #110b1d;
+    --card: #171024;
 
-/* --- Ajuste da Logo --- */
+    --primary: #a855f7;
+    --primary-dark: #7e22ce;
+    --secondary: #ec4899;
+
+    --gold: #f5c96a;
+
+    --text: #ffffff;
+    --text-soft: #c9bfd5;
+    --border: rgba(255,255,255,.10);
+
+    --max-width: 1180px;
+    --radius: 18px;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    background: var(--bg);
+    color: var(--text);
+
+    font-family: "Montserrat", sans-serif;
+
+    line-height: 1.7;
+
+    overflow-x: hidden;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+.container {
+    width: min(92%, var(--max-width));
+    margin: auto;
+}
+
+
+.section {
+    padding: 110px 0;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    position: relative;
+
+    min-height: 720px;
+
+    display: flex;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(168,85,247,.28),
+            transparent 45%
+        ),
+        linear-gradient(
+            135deg,
+            #090611 0%,
+            #160c25 50%,
+            #090611 100%
+        );
+}
+
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 20% 70%,
+            rgba(236,72,153,.12),
+            transparent 35%
+        );
+}
+
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+
+    max-width: 850px;
+}
+
+
 .logo {
-    max-width: 150px; /* Define um tamanho máximo legal para logo */
-    width: 100%;      /* Garante que ela diminua se a tela for muito pequena */
-    height: auto;     /* Mantém a proporção (não estica a imagem) */
-    display: block;   /* Permite centralizar */
-    margin: 0 auto 15px auto; /* Centraliza horizontalmente e dá espaço embaixo */
+    width: 125px;
+    margin: 0 auto 25px;
 }
 
-/* --- Garanta que a caixa de login tenha flexbox para alinhar tudo --- */
-.login-box {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    width: 90%;       /* Melhor para celular que largura fixa */
-    max-width: 320px; /* Trava a largura máxima no PC */
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    
-    /* Flexbox para garantir que tudo fique um embaixo do outro */
-    display: flex;
-    flex-direction: column;
+
+.eyebrow,
+.section-label {
+    color: var(--gold);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+}
+
+
+.hero h1 {
+    margin-top: 20px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(48px, 7vw, 82px);
+
+    line-height: .98;
+
+    font-weight: 500;
+}
+
+
+.hero h1 strong {
+    display: block;
+
+    color: var(--primary);
+
+    font-weight: 700;
+}
+
+
+.hero p {
+    max-width: 650px;
+
+    margin: 30px auto;
+
+    color: var(--text-soft);
+
+    font-size: 18px;
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.btn {
+    display: inline-flex;
+
     align-items: center;
-}
-body { margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, sans-serif; overflow: hidden; }
-
-#map { height: 100vh; width: 100%; z-index: 1; }
-
-/* --- TELA DE LOGIN --- */
-.login-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.85); /* Fundo escuro */
-    z-index: 9999;
-    display: flex;
     justify-content: center;
+
+    min-height: 54px;
+
+    padding: 0 32px;
+
+    border-radius: 50px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    transition: .3s;
+
+    cursor: pointer;
+}
+
+
+.btn-primary {
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    box-shadow:
+        0 15px 40px rgba(168,85,247,.25);
+}
+
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 20px 50px rgba(168,85,247,.4);
+}
+
+
+.btn-large {
+    min-height: 62px;
+    padding: 0 40px;
+}
+
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+.intro {
+    background: var(--bg-secondary);
+}
+
+
+.intro-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 80px;
+
     align-items: center;
 }
 
-.login-box {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    width: 300px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+
+.intro-image {
+    min-height: 550px;
 }
 
-.login-box input {
-    width: 90%;
-    padding: 10px;
-    margin: 15px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
+
+.image-placeholder {
+    min-height: 500px;
+
+    border-radius: 24px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(168,85,247,.35),
+            transparent 50%
+        ),
+        linear-gradient(
+            145deg,
+            #211333,
+            #0c0713
+        );
+
+    border: 1px solid var(--border);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.35);
+}
+
+
+.image-placeholder span {
+    font-size: 100px;
+
+    color: var(--gold);
+
+    opacity: .8;
+}
+
+
+.intro-text h2,
+.special-text h2,
+.section-heading h2,
+.contact h2 {
+    margin: 12px 0 25px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(42px, 5vw, 65px);
+
+    line-height: 1;
+}
+
+
+h2 span {
+    color: var(--primary);
+}
+
+
+.intro-text p,
+.special-text p,
+.section-heading p {
+    color: var(--text-soft);
+
+    margin-bottom: 20px;
+}
+
+
+.text-link {
+    display: inline-block;
+
+    margin-top: 15px;
+
+    color: var(--gold);
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   STATS
+===================================================== */
+
+.stats {
+    padding: 55px 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #160c25,
+            #241035,
+            #160c25
+        );
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+
+.stats-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
     text-align: center;
+}
+
+
+.stat {
+    padding: 10px 20px;
+
+    border-right: 1px solid var(--border);
+}
+
+
+.stat:last-child {
+    border-right: 0;
+}
+
+
+.stat strong {
+    display: block;
+
+    color: var(--gold);
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 45px;
+
+    line-height: 1;
+}
+
+
+.stat span {
+    color: var(--text-soft);
+
+    font-size: 12px;
+
     text-transform: uppercase;
+
+    letter-spacing: 1px;
 }
 
-.login-box button {
+
+/* =====================================================
+   SERVICES
+===================================================== */
+
+.services {
+    background: var(--bg);
+}
+
+
+.section-heading {
+    max-width: 700px;
+
+    margin: 0 auto 60px;
+
+    text-align: center;
+}
+
+
+.services-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
+}
+
+
+.service-card {
+    position: relative;
+
+    padding: 35px;
+
+    min-height: 300px;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    transition: .35s;
+}
+
+
+.service-card:hover {
+    transform: translateY(-8px);
+
+    border-color:
+        rgba(168,85,247,.5);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.3);
+}
+
+
+.service-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 25px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(168,85,247,.13);
+
+    color: var(--gold);
+
+    font-size: 25px;
+}
+
+
+.service-card h3 {
+    margin-bottom: 12px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 30px;
+}
+
+
+.service-card p {
+    color: var(--text-soft);
+
+    font-size: 14px;
+}
+
+
+.service-card a {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    color: var(--primary);
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   CTA
+===================================================== */
+
+.cta-banner {
+    padding: 110px 0;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(168,85,247,.3),
+            transparent 65%
+        ),
+        #11091b;
+}
+
+
+.cta-banner span {
+    color: var(--gold);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+}
+
+
+.cta-banner h2 {
+    max-width: 750px;
+
+    margin: 20px auto;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(45px, 6vw, 70px);
+
+    line-height: 1;
+}
+
+
+.cta-banner p {
+    max-width: 600px;
+
+    margin: 0 auto 30px;
+
+    color: var(--text-soft);
+}
+
+
+/* =====================================================
+   SPECIAL
+===================================================== */
+
+.special {
+    background: var(--bg-secondary);
+}
+
+
+.special-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 80px;
+
+    align-items: center;
+}
+
+
+.special-image .image-placeholder {
+    min-height: 600px;
+}
+
+
+.accordion-button {
     width: 100%;
-    padding: 10px;
-    background: #2e7d32;
+
+    margin-top: 12px;
+
+    padding: 18px 20px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    background: #191026;
+
     color: white;
-    border: none;
-    border-radius: 5px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
     cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
+
+    text-align: left;
+
+    font-weight: 600;
 }
 
-.login-box button:hover { background: #1b5e20; }
 
-/* --- CARD DE INFO (Mantido igual) --- */
-.delivery-info {
-    position: absolute; bottom: 30px; left: 50%;
-    transform: translateX(-50%); width: 90%; max-width: 400px;
-    background: white; padding: 20px; border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    z-index: 1000; display: flex; align-items: center; gap: 15px;
+.accordion-button span {
+    color: var(--gold);
+
+    font-size: 22px;
 }
 
-.driver-avatar {
-    width: 50px; height: 50px; border-radius: 50%;
-    background: #eee url('https://ui-avatars.com/api/?name=Caminhao&background=333&color=fff') center/cover;
+
+.accordion-content {
+    display: none;
+
+    padding: 20px;
+
+    color: var(--text-soft);
+
+    background: #100a19;
+
+    border-radius: 0 0 10px 10px;
 }
 
-.info-text h3 { margin: 0; font-size: 16px; color: #333; }
-.info-text p { margin: 5px 0 0; font-size: 13px; color: #666; }
-.status-badge {
-    background: #e3f2fd; color: #1565c0; padding: 4px 8px;
-    border-radius: 4px; font-size: 11px; font-weight: bold; display: inline-block;
+
+.accordion-content.active {
+    display: block;
 }
 
-.car-icon { font-size: 30px; line-height: 30px; text-align: center; transition: all 0.5s linear; }
+
+.accordion-content ul {
+    padding-left: 20px;
+}
+
+
+/* =====================================================
+   GALLERY
+===================================================== */
+
+.gallery {
+    background: var(--bg);
+}
+
+
+.gallery-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+
+.gallery-item {
+    height: 280px;
+
+    border-radius: 15px;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(236,72,153,.25),
+            transparent 45%
+        ),
+        linear-gradient(
+            135deg,
+            #261436,
+            #0b0710
+        );
+
+    border: 1px solid var(--border);
+
+    transition: .3s;
+}
+
+
+.gallery-item:hover {
+    transform: scale(1.02);
+}
+
+
+/* =====================================================
+   TESTIMONIALS
+===================================================== */
+
+.testimonials {
+    background: var(--bg-secondary);
+}
+
+
+.testimonial-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+.testimonial {
+    padding: 35px;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+}
+
+
+.stars {
+    margin-bottom: 20px;
+
+    color: var(--gold);
+
+    letter-spacing: 4px;
+}
+
+
+.testimonial p {
+    color: var(--text-soft);
+
+    font-size: 14px;
+
+    font-style: italic;
+}
+
+
+.testimonial strong {
+    display: block;
+
+    margin-top: 20px;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.contact {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(168,85,247,.25),
+            transparent 60%
+        ),
+        var(--bg);
+}
+
+
+.contact-box {
+    padding: 90px 40px;
+
+    text-align: center;
+
+    border: 1px solid var(--border);
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(168,85,247,.12),
+            rgba(236,72,153,.05)
+        );
+}
+
+
+.contact-content {
+    max-width: 700px;
+
+    margin: auto;
+}
+
+
+.contact-info {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 50px;
+
+    margin: 35px 0;
+}
+
+
+.contact-info div {
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.contact-info span {
+    color: var(--gold);
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    font-weight: 700;
+}
+
+
+.contact-info strong {
+    font-size: 15px;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    padding: 60px 0;
+
+    background: #050308;
+
+    text-align: center;
+}
+
+
+.footer-logo {
+    width: 80px;
+
+    margin: 0 auto 15px;
+}
+
+
+footer p {
+    color: var(--text-soft);
+}
+
+
+.footer-line {
+    width: 100%;
+
+    height: 1px;
+
+    margin: 30px 0;
+
+    background: var(--border);
+}
+
+
+footer small {
+    color: #77717f;
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   WHATSAPP
+===================================================== */
+
+.whatsapp-float {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    width: 62px;
+    height: 62px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #25d366;
+
+    color: white;
+
+    font-size: 30px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.35);
+
+    z-index: 1000;
+
+    transition: .3s;
+}
+
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+
+/* =====================================================
+   RESPONSIVO
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .section {
+        padding: 80px 0;
+    }
+
+
+    .intro-grid,
+    .special-grid {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+
+    .services-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .stats-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 30px;
+    }
+
+
+    .stat {
+        border-right: 0;
+    }
+
+
+    .gallery-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .hero {
+        min-height: 650px;
+    }
+
+
+    .hero h1 {
+        font-size: 52px;
+    }
+
+
+    .hero p {
+        font-size: 15px;
+    }
+
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .gallery-item {
+        height: 240px;
+    }
+
+
+    .contact-info {
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+
+    .contact-box {
+        padding: 60px 20px;
+    }
+
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .stat strong {
+        font-size: 35px;
+    }
+
+
+    .stat span {
+        font-size: 9px;
+    }
+
+
+    .whatsapp-float {
+        width: 55px;
+        height: 55px;
+
+        right: 18px;
+        bottom: 18px;
+    }
+
+}
