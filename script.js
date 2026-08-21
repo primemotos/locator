@@ -1,114 +1,158 @@
-document.addEventListener('DOMContentLoaded', () => {
+/* =====================================================
+   ANO AUTOMÁTICO
+===================================================== */
 
-    // ================= CONFIGURAÇÕES =================
-    // Origem: Poços de Caldas - MG (apenas referência)
-    const ORIGEM = [-21.7878, -46.5613];
+const year = document.getElementById("year");
 
-    // Destino: Suzano - SP (apenas referência)
-    const DESTINO = [-23.5425, -46.3117];
+if (year) {
+    year.textContent = new Date().getFullYear();
+}
 
-    // 📍 PRF – Centralina - MG
-    const PARADA_PRF = [-18.5858, -49.2016];
 
-    let map;
-    let fullRoute = [];
-    let retainedMarker;
-    let polyline;
+/* =====================================================
+   ACCORDION
+===================================================== */
 
-    document.getElementById('btn-login')?.addEventListener('click', verificarCodigo);
-    verificarSessaoSalva();
+const accordionButtons =
+    document.querySelectorAll(".accordion-button");
 
-    // ================= LOGIN =================
-    function verificarCodigo() {
-        const inputElement = document.getElementById('access-code');
-        if (!inputElement) return;
 
-        const code = inputElement.value.trim();
+accordionButtons.forEach(button => {
 
-        if (code !== "39450") {
-            alert("Código de rastreio inválido. Tente novamente.");
-            inputElement.value = "";
-            localStorage.removeItem('codigoAtivo');
-            return;
+    button.addEventListener("click", () => {
+
+        const content =
+            button.nextElementSibling;
+
+        const isOpen =
+            content.classList.contains("active");
+
+
+        document
+            .querySelectorAll(".accordion-content")
+            .forEach(item => {
+                item.classList.remove("active");
+            });
+
+
+        document
+            .querySelectorAll(".accordion-button span")
+            .forEach(icon => {
+                icon.textContent = "+";
+            });
+
+
+        if (!isOpen) {
+
+            content.classList.add("active");
+
+            const icon =
+                button.querySelector("span");
+
+            if (icon) {
+                icon.textContent = "−";
+            }
+
         }
 
-        localStorage.setItem('codigoAtivo', code);
-        carregarInterface();
-    }
-
-    function verificarSessaoSalva() {
-        const codigo = localStorage.getItem('codigoAtivo');
-        if (codigo === "39450") carregarInterface();
-    }
-
-    function carregarInterface() {
-        const overlay = document.getElementById('login-overlay');
-        const btnLogin = document.getElementById('btn-login');
-
-        if (btnLogin) btnLogin.innerText = "Consultando...";
-
-        buscarRotaNaAPI().then(() => {
-            if (overlay) overlay.style.display = 'none';
-            document.getElementById('info-card').style.display = 'flex';
-            iniciarMapa();
-        });
-    }
-
-    // ================= BUSCA DA ROTA (APENAS VISUAL) =================
-    async function buscarRotaNaAPI() {
-        const ORS_TOKEN = "eyJvcmciOiI1YjNjZTM1OTc4NTExMTAwMDFjZjYyNDgiLCJpZCI6ImQzY2QyNmU1ZWNlOTRjZDJhYTBiZDE0NGU5YmFlYzlhIiwiaCI6Im11cm11cjY0In0=";
-
-        const start = `${ORIGEM[1]},${ORIGEM[0]}`;
-        const end = `${DESTINO[1]},${DESTINO[0]}`;
-
-        const url = `https://api.openrouteservice.org/v2/directions/driving-car?api_key=${ORS_TOKEN}&start=${start}&end=${end}`;
-        const response = await fetch(url);
-        const data = await response.json();
-
-        fullRoute = data.features[0].geometry.coordinates.map(c => [c[1], c[0]]);
-    }
-
-    // ================= MAPA =================
-    function iniciarMapa() {
-
-        map = L.map('map', { zoomControl: false }).setView(PARADA_PRF, 12);
-
-        L.tileLayer(
-            'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'
-        ).addTo(map);
-
-        // Rota apenas ilustrativa
-        polyline = L.polyline(fullRoute, {
-            color: '#2563eb',
-            weight: 5,
-            dashArray: '10,10',
-            opacity: 0.4
-        }).addTo(map);
-
-        const motoIcon = L.divIcon({
-            className: 'custom-marker',
-            html: `<div style="font-size:32px;">🏍️</div>`,
-            iconSize: [30, 30],
-            iconAnchor: [15, 30]
-        });
-
-        // 🚨 MOTO JÁ RETIDA AO ABRIR
-        retainedMarker = L.marker(PARADA_PRF, {
-            icon: motoIcon,
-            zIndexOffset: 1000
-        }).addTo(map);
-
-        atualizarStatusPRF();
-    }
-
-    // ================= STATUS =================
-    function atualizarStatusPRF() {
-        const badge = document.getElementById('time-badge');
-        if (badge) {
-            badge.innerText = "RETIDO PELA PRF – FALTA DE NOTA FISCAL (CENTRALINA - MG)";
-            badge.style.background = "#dc2626";
-            badge.style.color = "#ffffff";
-        }
-    }
+    });
 
 });
+
+
+/* =====================================================
+   SCROLL SUAVE
+===================================================== */
+
+document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(link => {
+
+        link.addEventListener("click", function(event) {
+
+            const target =
+                document.querySelector(
+                    this.getAttribute("href")
+                );
+
+            if (!target) return;
+
+            event.preventDefault();
+
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        });
+
+    });
+
+
+/* =====================================================
+   ANIMAÇÃO AO ENTRAR NA TELA
+===================================================== */
+
+const animatedElements =
+    document.querySelectorAll(
+        ".service-card, .testimonial, .gallery-item, .stat"
+    );
+
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("visible");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+animatedElements.forEach(element => {
+
+    element.style.opacity = "0";
+
+    element.style.transform = "translateY(25px)";
+
+    element.style.transition =
+        "opacity .7s ease, transform .7s ease";
+
+    observer.observe(element);
+
+});
+
+
+/* =====================================================
+   CLASSE VISÍVEL
+===================================================== */
+
+const style =
+    document.createElement("style");
+
+style.innerHTML = `
+
+    .service-card.visible,
+    .testimonial.visible,
+    .gallery-item.visible,
+    .stat.visible {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+
+`;
+
+document.head.appendChild(style);
